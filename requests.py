@@ -10,7 +10,7 @@ class RequestHandler(BaseHTTPRequestHandler):
 
         if path == "/favicon.ico":
             self.set_headers('image/ico')
-            file = open("public_html/img/favicon.ico", 'rb')
+            file = open("public_html/favicon.ico", 'rb')
             self.get_content(file, file.read())
         elif path.split("/")[1] == "img":
             self.set_headers('image/*,image/jpeg,image/png')
