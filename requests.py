@@ -10,18 +10,18 @@ class RequestHandler(BaseHTTPRequestHandler):
 
         if path == "/favicon.ico":
             self.set_headers('image/ico')
-            file = open("../client/img/favicon.ico", 'rb')
+            file = open("../public_html/img/favicon.ico", 'rb')
             self.get_content(file, file.read())
         elif path.split("/")[1] == "img":
             self.set_headers('image/*,image/jpeg,image/png')
-            file = open("../client" + path, 'rb')
+            file = open("../public_html" + path, 'rb')
             self.get_content(file, file.read())
         else:
             self.set_headers('text/html')
             try:
-                file = open("../client" + path.split("?")[0], "r", encoding='utf-8')
+                file = open("../public_html" + path.split("?")[0], "r", encoding='utf-8')
             except FileNotFoundError:
-                file = open("../client/errors/404.html", "r", encoding='utf-8')
+                file = open("../public_html/errors/404.html", "r", encoding='utf-8')
             self.get_content(file, bytes(file.read(), "utf-8"))
         return
 
